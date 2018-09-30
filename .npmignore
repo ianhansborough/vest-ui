@@ -1,0 +1,7 @@
+node_modules
+/src/App.vue
+/src/main.js
+index.html
+src
+.babelrc
+webpack.config.js
