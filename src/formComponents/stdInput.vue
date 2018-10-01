@@ -94,127 +94,138 @@
 </template>
 
 <script>
-  import {mask} from 'vue-the-mask';
+import { mask } from "vue-the-mask";
 
-  export default {
-   name: 'StdInput',
-   inject: ['$validator'],
-   props: ['iName', 'iType', 'iValidate', 'iPlaceholder', 'iClass', 'iMask', 'iValue', 'iMin', 'iMax', 'iStep', 'labelClass', 'iOptional', 'iMoney'],
-   data() {
-    return {
-      localValue: null,
-    }
-   },
-   directives: {mask},
-   methods: {
-    updateModelValue: function(e) {
-      this.localValue = e.target.value;
-      this.$emit('input', e.target.value)
-    },
-   }
-  }
+export default {
+	name: "StdInput",
+	inject: ["$validator"],
+	props: [
+		"iName",
+		"iType",
+		"iValidate",
+		"iPlaceholder",
+		"iClass",
+		"iMask",
+		"iValue",
+		"iMin",
+		"iMax",
+		"iStep",
+		"labelClass",
+		"iOptional",
+		"iMoney"
+	],
+	data() {
+		return {
+			localValue: null
+		};
+	},
+	directives: { mask },
+	methods: {
+		updateModelValue: function(e) {
+			this.localValue = e.target.value;
+			this.$emit("input", e.target.value);
+		}
+	}
+};
 </script>
 
 <style lang='scss'>
-@import '../../styles/_variables.scss';
-input::-webkit-calendar-picker-indicator{
-  display: none;
+@import "../../styles/_variables.scss";
+input::-webkit-calendar-picker-indicator {
+	display: none;
 }
 input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  display: none;
+	-webkit-appearance: none;
+	display: none;
 }
 .std-input-label {
-  @include text-link
-  position: absolute;
-  top: 0;
-  left: 0;
-  pointer-events: none;
-  text-transform: initial;
-  color: $vest-blue;
-  &.blank {
-    transform: translateY(2.2rem);
-    color: $vest-gun-metal;
-  }
-  &.error {
-    color: $vest-red !important;
-    font-weight: bold;
-  }
-  span {
-    @include text-small
-    color: $vest-light-grey;
-    margin-left: 1rem;
-  }
+	@include text-link position: absolute;
+	top: 0;
+	left: 0;
+	pointer-events: none;
+	text-transform: initial;
+	color: $vest-blue;
+	&.blank {
+		transform: translateY(2.2rem);
+		color: $vest-gun-metal;
+	}
+	&.error {
+		color: $vest-red !important;
+		font-weight: bold;
+	}
+	span {
+		@include text-small color: $vest-light-grey;
+		margin-left: 1rem;
+	}
 }
 .std-input {
-  padding: 1rem 0;
-  outline: none;
-  border: none;
-  border-bottom: 1px solid $vest-gun-metal;
-  border-radius: 0 !important;
-  margin: 1.3rem 0 0.9rem 0;
-  display: inline-block;
-  transition: 0.1s all ease;
-  width: 100%;
-  @include text-link
-  text-transform: initial;
-  &:focus {
-    border-color: $vest-sky-blue;
-    &+label {
-      transform: translateY(0);
-      transition: 0.1s all ease;
-      color: $vest-blue;
-    }
-  }
-  &[aria-invalid='false'] {
-    border-color: $vest-success-green;
-    &.blank {
-      border-color: $vest-gun-metal;
-    }
-  }
-  &::placeholder {
-    color: $vest-gun-metal;
-  }
+	padding: 1rem 0;
+	outline: none;
+	border: none;
+	border-bottom: 1px solid $vest-gun-metal;
+	border-radius: 0 !important;
+	margin: 1.3rem 0 0.9rem 0;
+	display: inline-block;
+	transition: 0.1s all ease;
+	width: 100%;
+	@include text-link text-transform: initial;
+	&:focus {
+		border-color: $vest-sky-blue;
+		& + label {
+			transform: translateY(0);
+			transition: 0.1s all ease;
+			color: $vest-blue;
+		}
+	}
+	&[aria-invalid="false"] {
+		border-color: $vest-success-green;
+		&.blank {
+			border-color: $vest-gun-metal;
+		}
+	}
+	&::placeholder {
+		color: $vest-gun-metal;
+	}
 }
 .field-cont {
-  float: left;
-  position: relative;
-  .check {
-    pointer-events: none;
-    display: block;
-    position: absolute;
-    top: 2.8rem;
-    right: 2rem;
-    background-image: url('https://s3-us-east-2.amazonaws.com/vest-client-2-ohio/sm-checkmark-green.svg');
-    background-size: contain;
-    background-position: center;
-    background-repeat: no-repeat;
-    width: 1.4rem;
-    height: 1rem;
-  }
-  .ex {
-    pointer-events: none;
-    display: block;
-    position: absolute;
-    top: 2.8rem;
-    right: 2rem;
-    background-image: url('https://s3-us-east-2.amazonaws.com/vest-client-2-ohio/sm-x.svg');
-    background-size: contain;
-    background-position: center;
-    background-repeat: no-repeat;
-    width: 1rem;
-    height: 1rem;
-  }
+	float: left;
+	position: relative;
+	.check {
+		pointer-events: none;
+		display: block;
+		position: absolute;
+		top: 2.8rem;
+		right: 2rem;
+		background-image: url("https://s3-us-east-2.amazonaws.com/vest-client-2-ohio/sm-checkmark-green.svg");
+		background-size: contain;
+		background-position: center;
+		background-repeat: no-repeat;
+		width: 1.4rem;
+		height: 1rem;
+	}
+	.ex {
+		pointer-events: none;
+		display: block;
+		position: absolute;
+		top: 2.8rem;
+		right: 2rem;
+		background-image: url("https://s3-us-east-2.amazonaws.com/vest-client-2-ohio/sm-x.svg");
+		background-size: contain;
+		background-position: center;
+		background-repeat: no-repeat;
+		width: 1rem;
+		height: 1rem;
+	}
 }
 .std-error {
-  position: absolute;
-  top: 2.2rem;
-  right: 5rem;
-  pointer-events: none;
-  @include text-small
+	position: absolute;
+	top: 2.2rem;
+	right: 5rem;
+	pointer-events: none;
+	@include text-small;
 }
 .is-danger {
-  border-color: $vest-red !important;
-  color: $vest-red !important;
+	border-color: $vest-red !important;
+	color: $vest-red !important;
 }
 </style>
